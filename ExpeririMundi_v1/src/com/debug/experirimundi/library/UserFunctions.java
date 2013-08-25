@@ -37,10 +37,6 @@ public class UserFunctions {
         params.add(new BasicNameValuePair("password", password));
         JSONObject json = jsonParser.makeHttpRequest(loginURL, "POST", params);
 
-        if (json==null)
-            System.out.println("!!!! loginUser json==null !!!! ");
-        // return json
-        // Log.e("JSON", json.toString());
         return json;
     }
 

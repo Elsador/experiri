@@ -4,8 +4,10 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="8"
-              android:targetSdkVersion="11" />
+    <uses-sdk android:minSdkVersion="8" />
+    
+    <!--  Using synchronized tasks for login
+    * android:targetSdkVersion="17" -->
     
      <!-- Permissions -->
     <permission
@@ -47,12 +49,22 @@
         <!--  Login Activity -->
         <activity
             android:label="Login Account" 
-            android:name=".LoginActivity"></activity>
+            android:name=".LoginActivity">
+            <intent-filter >
+                <action android:name="android.intent.action.LOGINACTIVITY" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <!--  Register Activity -->
         <activity
             android:label="Register New Account" 
-            android:name=".RegisterActivity"></activity>
+            android:name=".RegisterActivity">
+            <intent-filter >
+                <action android:name="android.intent.action.REGISTERACTIVITY" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
