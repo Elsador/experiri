@@ -24,8 +24,8 @@ public class RegisterActivity extends Activity {
 
     // JSON Response node names
     private static String KEY_SUCCESS = "success";
-    private static String KEY_ERROR = "error";
-    private static String KEY_ERROR_MSG = "error_msg";
+//    private static String KEY_ERROR = "error";
+//    private static String KEY_ERROR_MSG = "error_msg";
     private static String KEY_UID = "uid";
     private static String KEY_NAME = "name";
     private static String KEY_EMAIL = "email";
@@ -60,7 +60,7 @@ public class RegisterActivity extends Activity {
                         registerErrorMsg.setText("");
                         String res = json.getString(KEY_SUCCESS);
                         if(Integer.parseInt(res) == 1){
-                            // user successfully registred
+                            // user successfully registered
                             // Store user details in SQLite Database
                             DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                             JSONObject json_user = json.getJSONObject("user");
