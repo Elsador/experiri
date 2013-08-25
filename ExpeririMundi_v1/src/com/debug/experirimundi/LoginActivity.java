@@ -12,8 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.debug.expiririmundi.library.DatabaseHandler;
-import com.debug.expiririmundi.library.UserFunctions;
+import com.debug.experirimundi.library.DatabaseHandler;
+import com.debug.experirimundi.library.UserFunctions;
 
 
 public class LoginActivity extends Activity {
@@ -25,8 +25,6 @@ public class LoginActivity extends Activity {
 
     // JSON Response node names
     private static String KEY_SUCCESS = "success";
-//    private static String KEY_ERROR = "error";
-//    private static String KEY_ERROR_MSG = "error_msg";
     private static String KEY_UID = "uid";
     private static String KEY_NAME = "name";
     private static String KEY_EMAIL = "email";
@@ -54,7 +52,8 @@ public class LoginActivity extends Activity {
                 UserFunctions userFunction = new UserFunctions();
                 Log.d("Button", "Login");
                 JSONObject json = userFunction.loginUser(email, password);
-
+                if (json==null)
+                    System.out.println("!!!! json==null !!!! ");
                 // check for login response
                 try {
                     if (json.getString(KEY_SUCCESS) != null) {

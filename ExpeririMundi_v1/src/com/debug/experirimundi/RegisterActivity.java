@@ -11,8 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.debug.expiririmundi.library.DatabaseHandler;
-import com.debug.expiririmundi.library.UserFunctions;
+import com.debug.experirimundi.library.DatabaseHandler;
+import com.debug.experirimundi.library.UserFunctions;
 
 public class RegisterActivity extends Activity {
     Button btnRegister;

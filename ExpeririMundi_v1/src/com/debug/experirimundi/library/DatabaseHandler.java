@@ -1,4 +1,4 @@
-package com.debug.expiririmundi.library;
+package com.debug.experirimundi.library;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package com.debug.expiririmundi.library;
+package com.debug.experirimundi.library;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +13,8 @@ public class UserFunctions {
 
     private final JSONParser jsonParser;
 
-    private static String loginURL = "http://192.168.0.100/android_login_api";
-    private static String registerURL = "http://192.168.0.100/android_login_api";
+    private static String loginURL = "http://192.168.0.100/android_login_api/index.php";
+    private static String registerURL = "http://192.168.0.100/android_login_api/index.php";
 
     private static String login_tag = "login";
     private static String register_tag = "register";
@@ -35,7 +35,10 @@ public class UserFunctions {
         params.add(new BasicNameValuePair("tag", login_tag));
         params.add(new BasicNameValuePair("email", email));
         params.add(new BasicNameValuePair("password", password));
-        JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
+        JSONObject json = jsonParser.makeHttpRequest(loginURL, "POST", params);
+
+        if (json==null)
+            System.out.println("!!!! loginUser json==null !!!! ");
         // return json
         // Log.e("JSON", json.toString());
         return json;
@@ -56,7 +59,7 @@ public class UserFunctions {
         params.add(new BasicNameValuePair("password", password));
 
         // getting JSON Object
-        JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
+        JSONObject json = jsonParser.makeHttpRequest(registerURL, "POST", params);
         // return json
         return json;
     }

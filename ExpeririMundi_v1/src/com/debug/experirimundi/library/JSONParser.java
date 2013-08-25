@@ -1,4 +1,4 @@
-package com.debug.expiririmundi.library;
+package com.debug.experirimundi.library;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +12,9 @@ import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,21 +32,42 @@ public class JSONParser {
 
     }
 
-    public JSONObject getJSONFromUrl(String url, List<NameValuePair> params) {
+    // function get json from url
+    // by making HTTP POST or GET mehtod
+    public JSONObject makeHttpRequest(String url, String method,
+            List<NameValuePair> params) {
 
         // Making HTTP request
         try {
-            // defaultHttpClient
-            DefaultHttpClient httpClient = new DefaultHttpClient();
-            System.out.println("GET Request !!!!!! "+ url + " !!!! ");
-            HttpPost httpPost = new HttpPost(url);
-            httpPost.setEntity(new UrlEncodedFormEntity(params));
 
-            HttpResponse httpResponse = httpClient.execute(httpPost);
-            System.out.println("GET Request !!!!!! "+ url + " !!!! ");
-            HttpEntity httpEntity = httpResponse.getEntity();
-            System.out.println("GET Request !!!!!! "+ url + " !!!! ");
-            is = httpEntity.getContent();
+            // check for request method
+            if(method == "POST"){
+                // request method is POST
+                // defaultHttpClient
+                DefaultHttpClient httpClient = new DefaultHttpClient();
+                System.out.println("!!!! HttpPost URL ="+url+" !!!! ");
+                HttpPost httpPost = new HttpPost(url);
+                httpPost.setEntity(new UrlEncodedFormEntity(params));
+                System.out.println("!!!! HttpPost URL ="+httpPost+" !!!! ");
+                HttpResponse httpResponse = httpClient.execute(httpPost);
+                HttpEntity httpEntity = httpResponse.getEntity();
+                is = httpEntity.getContent();
+
+            }else if(method == "GET"){
+                // request method is GET
+                DefaultHttpClient httpClient = new DefaultHttpClient();
+                String paramString = URLEncodedUtils.format(params, "utf-8");
+                url += "?" + paramString;
+                System.out.println("!!!! Requested URL ="+url+" !!!! ");
+                HttpGet httpGet = new HttpGet(url);
+                System.out.println("!!!! Requested URL 1");
+                HttpResponse httpResponse = httpClient.execute(httpGet);
+                System.out.println("!!!! Requested URL 2");
+                HttpEntity httpEntity = httpResponse.getEntity();
+                System.out.println("!!!! Requested URL 3");
+                is = httpEntity.getContent();
+            }
+
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -64,7 +87,7 @@ public class JSONParser {
             }
             is.close();
             json = sb.toString();
-            Log.e("JSON", json);
+            Log.e("JSON Parser", "Debug print " + json);
         } catch (Exception e) {
             Log.e("Buffer Error", "Error converting result " + e.toString());
         }
