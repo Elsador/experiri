@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#000000" >
+    
+    <TextView android:id="@+id/labelWelcome" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:textSize="40sp"
+        android:gravity="center"
+        android:text="Welcome" />
+    
+    <ExpandableListView
+        android:id="@+id/lvExp"
+        android:layout_width="match_parent"
+        android:layout_height="374dp"
+        android:cacheColorHint="#00000000" />
+    
+    <Button  
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="Logout Me"
+        android:textSize="20sp"
+        android:textColor="#21dbd4"
+        android:textStyle="bold" 
+        android:id="@+id/btnLogout"
+        android:layout_marginTop="10dip"
+        android:background="@null"/>
+
+</LinearLayout>
