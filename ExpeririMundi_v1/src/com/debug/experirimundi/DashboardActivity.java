@@ -137,42 +137,23 @@ public class DashboardActivity extends Activity {
         listDataChild = new HashMap<String, List<String>>();
 
         // Adding child data
-        listDataHeader.add("Tours");
-        listDataHeader.add("Races");
-        listDataHeader.add("Tour Edit Menu");
-        listDataHeader.add("Race Edit Menu");
+        listDataHeader.add("Tour Menu");
+        listDataHeader.add("Race Menu");
 
         // Adding child data
         List<String> tour = new ArrayList<String>();
         tour.add("Choose Tour");
-        tour.add("The Godfather");
-        tour.add("The Godfather: Part II");
-        tour.add("Pulp Fiction");
-        tour.add("The Good, the Bad and the Ugly");
-        tour.add("The Dark Knight");
-        tour.add("12 Angry Men");
+        tour.add("New Tour");
+        tour.add("Edit Tour");
+        tour.add("Delete Tour");
 
         List<String> race = new ArrayList<String>();
-        race.add("The Conjuring");
-        race.add("Despicable Me 2");
-        race.add("Turbo");
-        race.add("Grown Ups 2");
-        race.add("Red 2");
-        race.add("The Wolverine");
-
-        List<String> tourEdit = new ArrayList<String>();
-        tourEdit.add("New Tour");
-        tourEdit.add("Edit Tour");
-        tourEdit.add("Delete Tour");
-
-        List<String> raceEdit = new ArrayList<String>();
-        raceEdit.add("New Race");
-        raceEdit.add("Edit Race");
-        raceEdit.add("Delete Race");
+        race.add("Choose Race");
+        race.add("New Race");
+        race.add("Edit Race");
+        race.add("Delete Race");
 
         listDataChild.put(listDataHeader.get(0), tour); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), race);
-        listDataChild.put(listDataHeader.get(2), tourEdit);
-        listDataChild.put(listDataHeader.get(3), raceEdit);
+        listDataChild.put(listDataHeader.get(1), race);;
     }
 }
